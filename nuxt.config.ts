@@ -46,9 +46,9 @@ export default defineNuxtConfig({
     pwa: {
         registerType: 'autoUpdate',
         manifest: {
-            name: 'SoundCloud Clone',
-            short_name: 'SoundCloud',
-            theme_color: '#ff8800',
+            name: 'Portfolio Maikel',
+            short_name: 'Portfolio Maikel',
+            theme_color: '#347bff',
             icons: [
                 {
                     src: '/icons/icon-72-72.png',
