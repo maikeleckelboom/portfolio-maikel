@@ -2,9 +2,9 @@
 </script>
 
 <template>
-  <div class='grid grid-cols-10 py-4 rounded-md lowercase text-on-surface-variant'>
+  <div class='grid grid-cols-10 py-4 rounded-md lowercase text-on-surface-variant  '>
     <div
-        class='col-span-2  h-fit pt-1 pl-1 pr-3.5 border-r-thin border-outline-variant flex justify-end'>
+        class='col-span-2 h-fit pt-1 px-4 border-r-thin border-outline-variant flex justify-end'>
       <TheAvatar>
         <slot name="avatar"/>
       </TheAvatar>

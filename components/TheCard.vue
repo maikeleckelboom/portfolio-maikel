@@ -11,9 +11,9 @@ const {data} = defineProps<{
         class='col-span-2 md:col-span-1 h-fit pt-1 pl-1 pr-3.5  border-r-thin border-outline-variant flex justify-end'>
       <slot name='dates'/>
     </div>
-    <div class='col-span-8 md:col-span-9 mb-1 pl-3.5'>
+    <div class='col-span-7 text-[balance] md:col-span-9 mb-1 pl-3.5'>
       <slot name='heading'/>
-      <div class=" text-body-medium">
+      <div class=" text-body-medium ">
         <slot name='default'/>
       </div>
       <div>

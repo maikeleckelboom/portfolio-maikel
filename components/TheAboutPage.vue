@@ -1,7 +1,4 @@
 <script lang='ts' setup>
-
-import TheAvatar from "~/components/TheAvatar.vue";
-import ThePersonalia from "~/components/ThePersonalia.vue";
 </script>
 
 <template>
