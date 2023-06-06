@@ -2,37 +2,12 @@ import { Config } from 'tailwindcss'
 import pluginContainerQueries from '@tailwindcss/container-queries'
 import pluginTypography from '@tailwindcss/typography'
 import pluginScrollbar from 'tailwind-scrollbar'
-import plugin from 'tailwindcss/plugin'
-
-const pluginInlineSize =  plugin(({ addUtilities, addComponents, e, config }) => {
-  addUtilities({
-    '.inline-size-full': {
-      'inline-size': '100%',
-    },
-    '.block-size-full': {
-      'block-size': '100%',
-    },
-    '.min-inline-size-full': {
-      'min-inline-size': '100%',
-    },
-    '.min-block-size-full': {
-      'min-block-size': '100%',
-    },
-    '.max-inline-size-full': {
-      'max-inline-size': '100%',
-    },
-    '.max-block-size-full': {
-      'max-block-size': '100%',
-    },
-  })
-})
 
 export default {
   plugins: [
     pluginContainerQueries,
     pluginTypography,
     pluginScrollbar({ nocompatible: true }),
-    pluginInlineSize
   ],
   content: [
     './components/**/*.{js,vue,ts}',

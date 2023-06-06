@@ -10,7 +10,7 @@ const {item} = defineProps<{
   <NavListItem v-for='child in item.children' v-if='item.children' :key='child.name' :item='child'/>
   <li v-else class='flex flex-nowrap items-center gap-2.5 w-fit'>
     <slot v-bind='{item}'>
-      <NuxtLink :to='item.href' class='tracking-tight grid grid-cols-[40px,1fr] p-2.5 rounded-md' data-target='true'>
+      <NuxtLink :to='item.href' class='tracking-tight grid grid-cols-[40px,1fr] p-2.5 rounded-md'>
         <Icon v-if='item.icon' :name='item.icon' class='w-6 h-6'/>
         {{ item.value }}
       </NuxtLink>

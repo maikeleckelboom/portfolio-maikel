@@ -8,9 +8,9 @@ const toggleColorMode = () => {
 
 <template>
   <header
-    class='relative z-20 top-0 left-0 right-0 w-full px-0 py-2 xl:px-4 flex overflow-hidden bg-surface-level-1'>
+    class='relative z-20 top-0 left-0 right-0 w-full px-0 py-2 xl:px-4 flex overflow-hidden bg-surface'>
     <Center>
-      <nav class='flex flex-row justify-between '>
+      <nav class='flex flex-row justify-between'>
         <ul class='flex items-center flex-1'>
           <li>
             <NuxtLink  to='/' class="rounded-full p-2 flex">
@@ -51,7 +51,7 @@ const toggleColorMode = () => {
 
 header {
   view-transition-name: header;
-
+/*
   &:before {
     content: '';
     position: absolute;
@@ -62,6 +62,6 @@ header {
     background-image: linear-gradient(0, rgba(var(--md-sys-color-surface-rgb) / 1) 0%, rgba(var(--md-sys-color-on-surface-rgb) / 0) 100%);
     z-index: -1;
     pointer-events: none;
-  }
+  }*/
 }
 </style>

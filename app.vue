@@ -1,29 +1,25 @@
-<script lang='ts' setup>
-const theme = useTheme()
+<script lang="ts" setup>
+const theme = useTheme();
 
-const colorMode = useColorMode()
-
+const colorMode = useColorMode();
 
 useHead({
-  title: 'Portfolio - Maikel Eckelboom',
+  title: "Portfolio - Maikel Eckelboom",
   meta: [
     {
-      name: 'description',
-      content: 'Het portfolio van Maikel Eckelboom'
+      name: "description",
+      content: "Het portfolio van Maikel Eckelboom",
     },
     {
-      name: 'theme-color',
-      theme_color: 'var(--md-sys-color-surface)'
-    }
-  ]
-})
-
+      name: "theme-color",
+      theme_color: "var(--md-sys-color-surface)",
+    },
+  ],
+});
 </script>
 
 <template>
-  <NuxtLoadingIndicator
-      :color='useColorGradient()'
-  />
+  <NuxtLoadingIndicator :color="useColorGradient()" />
   <div class="min-h-screen">
     <NuxtPage />
   </div>
