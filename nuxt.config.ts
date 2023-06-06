@@ -53,7 +53,7 @@ export default defineNuxtConfig({
         manifest: {
             name: 'Portfolio Maikel',
             short_name: 'Portfolio Maikel',
-            theme_color: '#347bff',
+            theme_color: '#1B1B1F',
             icons: [
                 {
                     src: '/icons/icon-72-72.png',

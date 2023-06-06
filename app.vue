@@ -1,12 +1,19 @@
 <script lang='ts' setup>
 const theme = useTheme()
 
+const colorMode = useColorMode()
+
+
 useHead({
   title: 'Portfolio - Maikel Eckelboom',
   meta: [
     {
       name: 'description',
       content: 'Het portfolio van Maikel Eckelboom'
+    },
+    {
+      name: 'theme-color',
+      theme_color: 'var(--md-sys-color-surface)'
     }
   ]
 })
