@@ -17,7 +17,12 @@ const parentElement = useParentElement()
 
 const {x, y} = useMouse({type: 'client'})
 
-watchOnce([x, y], () => emit('moved'))
+const hasMoved = useState()
+
+watchOnce([x, y], () => {
+  hasMoved.value = true
+  emit('moved')
+})
 
 const {element} = useElementByPoint({x, y})
 
@@ -118,12 +123,16 @@ watch(router.currentRoute, onRouteChange)
 </script>
 
 <template>
-  <div id='cursor'
-       ref='elCursor'
-       class='fixed z-50 inset-0 rounded-xl block-size-full inline-size-full pointer-events-none overflow-hidden opacity-90'>
-    <div id='cursor-background' class='w-full h-full -z-10 bg-on-surface/50'/>
-    <div id='cursor-light' class='absolute top-0 left-0 w-full pt-[100%] z-10 opacity-0'/>
-  </div>
+  <Transition name="fade-scale">
+    <div v-show="hasMoved"
+         id='cursor'
+         key="cursor"
+         ref='elCursor'
+         class='fixed z-50 inset-0 rounded-xl block-size-full inline-size-full pointer-events-none overflow-hidden opacity-90'>
+      <div id='cursor-background' class='w-full h-full -z-10 bg-on-surface/50'/>
+      <div id='cursor-light' class='absolute top-0 left-0 w-full pt-[100%] z-10 opacity-0'/>
+    </div>
+  </Transition>
 </template>
 
 <!--suppress CssUnresolvedCustomProperty -->
@@ -175,23 +184,43 @@ watch(router.currentRoute, onRouteChange)
 }
 
 [data-target="true"] {
-  transition: transform 100ms linear, opacity 0.2s linear;
+  transition: transform 140ms linear, opacity 0.2s linear, all 0.14s ease-out;
+
+  * {
+    pointer-events: none;
+  }
 
   &:hover {
     --px: calc(((var(--pointer-x) - var(--x)) / var(--w)) - 0.5);
     --py: calc(((var(--pointer-y) - var(--y)) / var(--h)) - 0.5);
     transform: translate(calc(var(--px) * 4px), calc(var(--py) * 4px));
     cursor: pointer;
-
-    * {
-      pointer-events: none;
-    }
   }
 }
 
 @media (prefers-reduced-motion) {
   #cursor:not([data-hover]):not([data-transitioning]) {
-    transition: none;
+    //transition: none;
   }
+}
+</style>
+
+<style>
+.fade-scale-enter-active,
+.fade-scale-leave-active {
+  transition: all 2.5s ease;
+  transform-origin: center;
+}
+
+.fade-scale-enter-from,
+.fade-scale-leave-to {
+  opacity: 0.25;
+  transform: scale(0);
+}
+
+.fade-scale-enter-to,
+.fade-scale-leave-from {
+  opacity: 1;
+  transform: scale(1);
 }
 </style>

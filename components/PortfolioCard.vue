@@ -1,7 +1,7 @@
 <script lang='ts' setup>
-import { PortfolioData } from '~/types'
+import {PortfolioData} from '~/types'
 
-const { data } = defineProps<{
+const {data} = defineProps<{
   data: PortfolioData
 }>()
 
@@ -15,8 +15,8 @@ const yearFromDate = (date: string) => {
 <template>
   <TheCard :data='data'>
     <template #dates>
-      <div class='border border-transparent w-fit rounded-md p-0.5'>
-        <p class='text-body-medium font-bold '>
+      <div class=' w-fit text-end'>
+        <p class='text-body-medium font-bold'>
           {{ yearFromDate(data.date_end) }}
         </p>
         <p class='text-label-medium opacity-70 font-semibold'>
@@ -25,7 +25,8 @@ const yearFromDate = (date: string) => {
       </div>
     </template>
     <template #heading>
-      <p class='text-title-medium text-on-surface-variant leading-tight font-bold md:text-title-large md:font-bold'>
+      <p class='text-title-medium text-on-surface-variant leading-tight font-bold md:text-title-large md:font-bold'
+      >
         {{ data.heading }} - {{ data.company_name }}
       </p>
       <p class='text-label-medium text-on-surface-variant leading-loose font-semibold'>
@@ -41,5 +42,6 @@ const yearFromDate = (date: string) => {
 </template>
 
 <style lang='postcss' scoped>
+
 
 </style>

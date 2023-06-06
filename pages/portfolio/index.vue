@@ -12,10 +12,10 @@ const onMoved = () => {
       v-show="hasMoved"
       @moved="onMoved"
   />
-  <Header/>
-  <main class='relative'>
-    <Breadcrumbs/>
-
-
+  <TheHeader/>
+  <main class='relative '>
+    <Center>
+      <Breadcrumbs/>
+    </Center>
   </main>
 </template>

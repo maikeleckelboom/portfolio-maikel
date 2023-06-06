@@ -1,7 +1,9 @@
 <script lang='ts' setup>
-import type { NavItem } from '~/types'
+import type {NavItem} from '~/types'
 import PortfolioCards from '~/components/PortfolioCards.vue'
-import TheHeadline from '~/components/TheHeadline.vue'
+import TheHeadline from '~/components/ThePersonalia.vue'
+import TheAvatar from "~/components/TheAvatar.vue";
+import ThePersonalia from "~/components/ThePersonalia.vue";
 
 const contactDetails = ref<NavItem[]>([
 
@@ -42,83 +44,79 @@ const socialsList = ref<NavItem[]>([
 </script>
 
 <template>
-    <Center>
-      <div class='grid grid-cols-1 md:grid-cols-2 w-full gap-6 p-4 md:p-0'>
-        <div>
-          <section class='flex flex-col'>
-            <h2 class='text-2xl font-thin text-on-surface-variant tracking-wide leading-tight -skew-x-6'>
-              over mij
-            </h2>
-            <TheHeadline class=''>
-              <template #title>
-                Maikel Eckelboom
-              </template>
-              <template #subtitle>
-                Full-stack developer met een passie voor design en technologie.
-              </template>
-            </TheHeadline>
-          </section>
-          <section class='flex flex-col'>
-            <div>
-              <div class='flex flex-nowrap justify-between mb-4'>
-                <h2 class='text-2xl font-thin text-on-surface-variant tracking-wide leading-tight -skew-x-6'>
-                  werkervaring
-                </h2>
-              </div>
-              <div class='flex flex-col'>
-                <PortfolioCards />
-              </div>
-<!--              <div class='mt-4 mb-2'>-->
-<!--                <h3 class='text-xl font-thin text-on-surface-variant tracking-wide leading-tight -skew-x-6'>-->
-<!--                  vrije tijd-->
-<!--                </h3>-->
-<!--              </div>-->
-<!--              <div class='flex flex-col'>-->
-<!--                -->
-<!--              </div>-->
-            </div>
-          </section>
-        </div>
-        <div>
-          <section class='flex flex-col'>
-            <h1 class='text-2xl font-thin text-on-surface-variant tracking-wide leading-tight -skew-x-6'>
-              contact
+  <Center>
+    <div class='flex w-full gap-6 '>
+
+      <div class="py-2 max-w-2xl">
+        <section class='flex flex-col'>
+          <!--          <h1 class='text-2xl font-thin text-on-surface-variant tracking-wide leading-tight -skew-x-6'>-->
+          <!--            over mij-->
+          <!--          </h1>-->
+          <ThePersonalia class=" rounded-md " data-view-transition-name="personalia">
+            <template #avatar>
+                <NuxtImg alt="Maikel Eckelboom"
+                         class="object-cover absolute filter grayscale"
+                         src="maikel-circle.svg"
+                />
+            </template>
+            <template #title>
+              Maikel Eckelboom
+            </template>
+            <template #subtitle>
+              Full-stack developer met een passie voor design en technologie.
+            </template>
+            <template #footer>
+              <NuxtLink
+                  class='text-label-medium font-semibold grid place-items-center px-4 py-2 h-[38px] rounded-full
+                  border-thin border-outline-variant hover:bg-primary hover:text-on-primary'
+                  to='/about'
+              >
+                meer over mij
+              </NuxtLink>
+            </template>
+          </ThePersonalia>
+        </section>
+        <section class='flex flex-col pt-4'>
+          <div class='flex flex-nowrap justify-between items-baseline px-3 md:px-0'>
+            <h1 class='text-2xl font-thin tracking-wide leading-tight -skew-x-6 mb-4'>
+              werkervaring
             </h1>
-            <div class='grid items-end gap-6 relative w-full '>
-              <NavList :items='contactDetails' />
-            </div>
-          </section>
-        </div>
+            <NuxtLink
+                class='text-label-medium font-semibold grid place-items-center px-4 py-2 rounded-full
+                  border-thin border-outline-variant hover:bg-primary hover:text-on-primary h-[38px]'
+                to='/portfolio'
+            >
+              bekijk alles
+            </NuxtLink>
+          </div>
+          <div class='flex flex-col'>
+            <PortfolioCards/>
+          </div>
+        </section>
       </div>
-    </Center>
+
+<!--      <div>-->
+        <!--        <section class='flex flex-col'>-->
+        <!--          <div class=" px-3 md:px-0">-->
+        <!--            <div class='grid items-end gap-6 relative w-full '>-->
+        <!--              <NavList :items='contactDetails'/>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </section>-->
+<!--      </div>-->
+    </div>
+  </Center>
 </template>
 
 <style lang='postcss'>
+[data-view-transition-name="personalia"] {
+  view-transition-name: personalia;
+}
 
+::view-transition-old(personalia) {
+}
+
+::view-transition-new(personalia) {
+}
 
 </style>
-
-<!--
-
-<style scoped>
-a.active {
-  view-transition-name: clicked-link;
-}
-</style>
-
-<style>
-::view-transition-old(clicked-link),
-::view-transition-new(clicked-link) {
-  transition-duration: 300ms;
-}
-
-::view-transition-old(clicked-link) {
-  transform: scale(0);
-}
-
-::view-transition-new(clicked-link) {
-  transform: scale(1);
-}
-</style>
-
--->

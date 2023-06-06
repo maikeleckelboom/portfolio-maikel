@@ -17,7 +17,9 @@ useHead({
   <NuxtLoadingIndicator
       :color='useColorGradient()'
   />
-  <NuxtPage />
+  <div class="min-h-screen">
+    <NuxtPage />
+  </div>
   <VitePwaManifest />
 </template>
 

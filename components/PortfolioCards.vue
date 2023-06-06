@@ -1,5 +1,6 @@
 <script lang='ts' setup>
 import {PortfolioData} from '~/types'
+import TheNav from "~/components/TheNav.vue";
 
 const {data: portfolio} = await useAsyncData(
     'portfolio',
@@ -32,39 +33,21 @@ const {data: portfolio} = await useAsyncData(
       }, [])
     }
 )
+const active = useState()
 </script>
 
 <template>
-  <nav>
+  <TheNav>
     <ul class='grid gap-2'>
-      <li
-          v-for='data in portfolio'
-          :key='data.id'>
-        <NuxtLink
-            :to='data.href'
-        >
-          <PortfolioCard
-              :data='data'
-          />
+      <li v-for='data in portfolio' :key='data.id'>
+        <NuxtLink :class="{'selected': active === data.id}" :to='data.href' @click.native='active = data.id'>
+          <PortfolioCard :data='data'/>
         </NuxtLink>
       </li>
     </ul>
-  </nav>
+  </TheNav>
 </template>
 
 <style lang='postcss' scoped>
-li {
-  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-}
 
-nav:has(li:hover):hover ul > * {
-  opacity: 0.4;
-  transform: scale(0.96);
-}
-
-nav:has(li:hover) ul > *:hover {
-  opacity: 1;
-  transform: scale(1);
-  transition-delay: 0ms, 0ms;
-}
 </style>

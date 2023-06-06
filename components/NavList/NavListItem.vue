@@ -1,18 +1,20 @@
-<script setup lang='ts'>
-import { NavItem } from '~/types'
+<script lang='ts' setup>
+import {NavItem} from '~/types'
 
-const { item } = defineProps<{
+const {item} = defineProps<{
   item: NavItem
 }>()
 </script>
 
 <template>
-  <NavListItem v-if='item.children' v-for='child in item.children' :key='child.name' :item='child' />
+  <NavListItem v-for='child in item.children' v-if='item.children' :key='child.name' :item='child'/>
   <li v-else class='flex flex-nowrap items-center gap-2.5 w-fit'>
-    <NuxtLink :to='item.href' data-target='true' class='tracking-tight grid grid-cols-[40px,1fr] p-2.5 rounded-md'>
-      <Icon v-if='item.icon' :name='item.icon' class='w-6 h-6' />
-      {{ item.value }}
-    </NuxtLink>
+    <slot v-bind='{item}'>
+      <NuxtLink :to='item.href' class='tracking-tight grid grid-cols-[40px,1fr] p-2.5 rounded-md' data-target='true'>
+        <Icon v-if='item.icon' :name='item.icon' class='w-6 h-6'/>
+        {{ item.value }}
+      </NuxtLink>
+    </slot>
   </li>
 </template>
 
