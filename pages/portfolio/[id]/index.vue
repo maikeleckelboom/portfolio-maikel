@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { PortfolioData } from "~/types";
+import { PortfolioData } from "~/types"
 
-const router = useRouter();
-const client = useSupabaseClient();
+const router = useRouter()
+const client = useSupabaseClient()
 
 const { data, error, refresh } = (await useAsyncData(
   "portfolio-id",
@@ -15,61 +15,55 @@ const { data, error, refresh } = (await useAsyncData(
   {
     transform: ({ data }) => data,
   }
-)) as { data: PortfolioData; error: Error; refresh: () => void };
+)) as { data: PortfolioData; error: Error; refresh: () => void }
 
 const yearFromDate = (date: string) => {
-  const [year] = date.split("-");
-  return year;
-};
+  const [year] = date.split("-")
+  return year
+}
 </script>
 
 <template>
+  <TheTopAppBar id="the-top-bar"> </TheTopAppBar>
   <main class="relative">
-    <TheHeader />
-    <div class="">
+    <div class="px-3 pt-8">
       <Center>
-        <div class="grid grid-cols-12 pb-2 pt-4">
-          <div class="col-span-3 h-fit px-4 py-1.5 xl:col-span-1">
-            <div class="w-fit border border-transparent">
-              <p class="text-title-large font-bold">
-                {{ yearFromDate(data.date_end) }}
-              </p>
-              <p class="text-title-medium font-semibold opacity-70">
-                {{ yearFromDate(data.date_start) }}
-              </p>
-            </div>
-          </div>
-          <div
-            class="col-span-9 mb-2 border-l-2 border-outline-variant pl-8 xl:col-span-11"
+        <div>
+          <p
+            class="text-headline-small font-bold md:text-headline-large md:font-bold"
           >
-            <p
-              class="text-headline-small font-bold md:text-headline-large md:font-bold"
-            >
-              {{ data.heading }} - {{ data.company_name }}
-            </p>
-            <p
-              class="text-title-medium leading-normal text-on-surface-variant md:text-headline-small"
-            >
-              {{ data.subheading }}
-            </p>
-          </div>
+            {{ data.heading }} - {{ data.company_name }}
+          </p>
+          <p
+            class="text-title-medium leading-normal text-on-surface-variant md:text-headline-small"
+          >
+            {{ data.subheading }}
+          </p>
         </div>
       </Center>
     </div>
   </main>
 </template>
 
-<style lang="postcss" scoped>
-[data-view-transition-name="heading"] {
-  view-transition-name: heading;
+<style lang="postcss">
+#the-top-bar {
+  view-transition-name: top-bar;
 }
 
-::view-transition-old(heading) {
+::view-transition-old(top-bar),
+::view-transition-new(top-bar) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
 }
 
-::view-transition-image-pair(heading) {
+::view-transition-old(top-bar) {
+  transform: translateY(-100%);
 }
 
-::view-transition-group(heading) {
+::view-transition-new(top-bar) {
+  transform: translateY(0);
 }
 </style>

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useBreadcrumbs } from "~/composables/useBreadcrumbs";
+import { useBreadcrumbs } from "~/composables/useBreadcrumbs"
 
-const { breadcrumbs, isNotFirstCrumb, isNotCurrentCrumb } = useBreadcrumbs();
+const { breadcrumbs, isNotFirstCrumb, isNotCurrentCrumb } = useBreadcrumbs()
 </script>
 
 <template>
@@ -33,7 +33,9 @@ const { breadcrumbs, isNotFirstCrumb, isNotCurrentCrumb } = useBreadcrumbs();
           v-if="isNotFirstCrumb(crumb)"
           class="flex flex-row items-center gap-1"
         >
-          <span class="text-on-surface-variant opacity-50">
+          <span
+            class="saturate-90 font-bold text-on-surface-variant opacity-90"
+          >
             {{ crumb.name }}
           </span>
         </div>

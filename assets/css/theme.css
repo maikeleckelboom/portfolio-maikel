@@ -233,4 +233,6 @@
     --md-sys-color-inverse-surface-dark-rgb: 227 226 230;
     --md-sys-color-inverse-on-surface-dark-rgb: 48 48 52;
     --md-sys-color-inverse-primary-dark-rgb: 0 87 205;
+
+    --vibrant-blue: oklab(68% -0.32 -0.5)
 }

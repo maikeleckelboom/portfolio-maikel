@@ -1,23 +1,21 @@
-<script lang='ts' setup>
-</script>
+<script lang="ts" setup></script>
 
 <template>
-  <div class='grid grid-cols-10 py-4 rounded-md lowercase text-on-surface-variant'>
-    <div
-        class='col-span-2 h-fit pt-1 px-4 border-r-thin border-outline-variant flex justify-end'>
+  <div class="flex w-full gap-5 px-3 py-4 text-on-surface-variant">
+    <div class="flex">
       <TheAvatar>
-        <slot name="avatar"/>
+        <slot name="avatar" />
       </TheAvatar>
     </div>
-    <div class='col-span-8 mb-1 pl-3.5'>
+    <div class="">
       <TheTitle>
-        <slot name='title'/>
+        <slot name="title" />
       </TheTitle>
       <TheSubtitle>
-        <slot name='subtitle'/>
+        <slot name="subtitle" />
       </TheSubtitle>
-      <div class="flex col-span-full">
-        <slot name="footer"/>
+      <div class="col-span-full flex">
+        <slot name="footer" />
       </div>
     </div>
   </div>

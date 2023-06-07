@@ -1,14 +1,17 @@
 <template>
   <div
-      class="rounded-full grid place-items-center aspect-square relative overflow-hidden
-      max-h-[78px] min-w-[48px] w-[78px] md:h-[78px] md:w-[78px]
-      border-thin border-outline-variant">
-    <slot/>
+    class="p2 ce-items-center relative grid aspect-square h-16 w-16 rounded-full border-thin border-outline-variant p-4"
+  >
+    <slot />
   </div>
 </template>
 
 <style scoped lang="postcss">
+[data-class="inner-circle"] {
+}
 .selected div {
   view-transition-name: avatar;
 }
 </style>
+
+<script setup></script>

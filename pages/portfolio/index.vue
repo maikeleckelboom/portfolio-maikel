@@ -1,21 +1,11 @@
-<script lang='ts' setup>
-
-const hasMoved = useState()
-const onMoved = () => {
-  hasMoved.value = true
-}
-</script>
+<script lang="ts" setup></script>
 
 <template>
-  <TheCursor
-      v-if='useDevice().isDesktop'
-      v-show="hasMoved"
-      @moved="onMoved"
-  />
-  <TheHeader/>
-  <main class='relative '>
+  <TheCursor v-if="useDevice().isDesktop" />
+  <TheHeader />
+  <main class="relative">
     <Center>
-      <Breadcrumbs/>
+      <Breadcrumbs />
     </Center>
   </main>
 </template>

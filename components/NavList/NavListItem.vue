@@ -1,24 +1,32 @@
-<script lang='ts' setup>
-import {NavItem} from '~/types'
+<script lang="ts" setup>
+import { NavItem } from "~/types"
 
-const {item} = defineProps<{
+const { item } = defineProps<{
   item: NavItem
 }>()
 </script>
 
 <template>
-  <NavListItem v-for='child in item.children' v-if='item.children' :key='child.name' :item='child'/>
-  <li v-else class='flex flex-nowrap items-center gap-2.5 w-fit'>
-    <slot v-bind='{item}'>
-      <NuxtLink :to='item.href' class='tracking-tight grid grid-cols-[40px,1fr] p-2.5 rounded-md'>
-        <Icon v-if='item.icon' :name='item.icon' class='w-6 h-6'/>
-        {{ item.value }}
+  <NavListItem
+    v-for="child in item.children"
+    v-if="item.children"
+    :key="child.name"
+    :item="child"
+  />
+  <li v-else class="flex w-fit flex-nowrap items-center gap-2.5">
+    <slot v-bind="{ item }">
+      <NuxtLink
+        :to="item.href"
+        class="grid grid-cols-[40px,1fr] rounded-md p-2.5"
+      >
+        <Icon v-if="item.icon" :name="item.icon" class="h-6 w-6" />
+        <span class="text-sm font-medium">{{ item.value }}</span>
       </NuxtLink>
     </slot>
   </li>
 </template>
 
-<style lang='postcss' scoped>
+<style lang="postcss" scoped>
 li {
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
 }

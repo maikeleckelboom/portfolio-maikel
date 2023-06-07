@@ -1,4 +1,4 @@
-const IMAGEKIT_URL = "https://ik.imagekit.io/g0dlexrqu" as const;
+const IMAGEKIT_URL = "https://ik.imagekit.io/g0dlexrqu" as const
 
 export default defineNuxtConfig({
   experimental: {
@@ -12,24 +12,17 @@ export default defineNuxtConfig({
   },
   modules: [
     "@vite-pwa/nuxt",
-    "nuxt-icon",
     "@pinia/nuxt",
-    "@nuxtjs/color-mode",
-    "@nuxt/image-edge",
     "@vueuse/nuxt",
     "@nuxtjs/device",
     "@nuxtjs/supabase",
+    "@nuxtjs/color-mode",
+    "@nuxt/image-edge",
+    "nuxt-icon",
     "@/modules/theme/index.ts",
   ],
-  appConfig: {
-    theme: {
-      options: {
-        dark: true,
-      },
-      colors: {
-        primary: "#347bff",
-      },
-    },
+  pinia: {
+    autoImports: ["defineStore"],
   },
   image: {
     provider: "imagekit",
@@ -93,4 +86,4 @@ export default defineNuxtConfig({
       installPrompt: true,
     },
   },
-});
+})
