@@ -24,10 +24,12 @@ const yearFromDate = (date: string) => {
 </script>
 
 <template>
-  <TheTopAppBar id="the-top-bar"> </TheTopAppBar>
-  <main class="relative">
-    <div class="px-3 pt-8">
-      <Center>
+  <TheHeader />
+  <Center>
+    <Breadcrumbs />
+
+    <main class="relative">
+      <div class="px-3 pt-8">
         <div>
           <p
             class="text-headline-small font-bold md:text-headline-large md:font-bold"
@@ -40,30 +42,59 @@ const yearFromDate = (date: string) => {
             {{ data.subheading }}
           </p>
         </div>
-      </Center>
-    </div>
-  </main>
+      </div>
+    </main>
+  </Center>
 </template>
 
 <style lang="postcss">
-#the-top-bar {
+#top-bar {
   view-transition-name: top-bar;
 }
 
-::view-transition-old(top-bar),
-::view-transition-new(top-bar) {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes translate-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes translate-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 ::view-transition-old(top-bar) {
-  transform: translateY(-100%);
+  animation: translate-up 0.2s ease-out;
+  animation-fill-mode: both;
 }
 
 ::view-transition-new(top-bar) {
-  transform: translateY(0);
+  animation: translate-down 0.2s ease-in;
+  animation-fill-mode: both;
 }
 </style>

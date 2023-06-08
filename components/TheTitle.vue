@@ -1,6 +1,6 @@
 <template>
   <h1
-    class="mb-2 text-headline-small font-semibold leading-tight md:text-headline-large"
+    class="mb-2 text-headline-medium font-semibold leading-tight text-on-surface md:text-display-small"
   >
     <slot />
   </h1>

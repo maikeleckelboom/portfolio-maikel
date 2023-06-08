@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { onBeforeRouteUpdate } from "#app"
+import { hexFromArgb } from "@material/material-color-utilities"
 import { storeToRefs } from "pinia"
+import theme from "tailwindcss/defaultTheme"
 import { useSoundStore } from "~/stores/useSoundStore"
 
 const emit = defineEmits<{
@@ -89,6 +91,17 @@ whenever(element, (el) => {
   const cursorEl = elCursor.value as HTMLElement
   cursorEl.dataset.hover = "true"
 
+  if (el.hasAttribute("data-source-color")) {
+    const source = el.getAttribute("data-source-color")
+    if (!source) {
+      return
+    }
+    const hex = hexFromArgb(parseInt(source))
+    cursorEl.style.setProperty("--source-color", hex)
+  } else {
+    cursorEl.style.setProperty("--source-color", "#E3E2E6")
+  }
+
   const radius = getComputedStyle(el).borderRadius
   cursorEl.style.setProperty("--radius", parseInt(radius).toString())
   cursorEl.style.setProperty("--hover-x", rect.left.toString())
@@ -99,6 +112,8 @@ whenever(element, (el) => {
   useEventListener(el, "pointerleave", (_ev: PointerEvent) => {
     const cursorEl = elCursor.value as HTMLElement
     delete cursorEl.dataset.hover
+
+    cursorEl.style.removeProperty("--source-color")
     cursorEl.style.removeProperty("--radius")
     cursorEl.style.removeProperty("--hover-x")
     cursorEl.style.removeProperty("--hover-y")
@@ -153,10 +168,7 @@ watch(router.currentRoute, onRouteChange)
       ref="elCursor"
       class="block-size-full inline-size-full pointer-events-none fixed inset-0 z-50 overflow-hidden rounded-xl opacity-90"
     >
-      <div
-        id="cursor-background"
-        class="-z-10 h-full w-full bg-on-surface/50"
-      />
+      <div id="cursor-background" class="-z-10 h-full w-full bg-on-surface" />
       <div
         id="cursor-light"
         class="absolute left-0 top-0 z-10 w-full pt-[100%] opacity-0"
@@ -169,6 +181,11 @@ watch(router.currentRoute, onRouteChange)
 <style lang="postcss">
 #cursor {
   view-transition-name: cursor;
+}
+
+#cursor-background {
+  background: var(--source-color, #e3e2e6);
+  opacity: 0.5;
 }
 
 #cursor {

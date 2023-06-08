@@ -1,6 +1,11 @@
 <script lang="ts" setup>
+import {
+  argbFromHex,
+  hexFromArgb,
+  Theme,
+  themeFromImage,
+} from "@material/material-color-utilities"
 import { PortfolioData } from "~/types"
-import TheNav from "~/components/TheNav.vue"
 
 const { data: portfolio } = await useAsyncData(
   "portfolio",
@@ -15,6 +20,9 @@ const { data: portfolio } = await useAsyncData(
             description,
             short_description,
             company_name,
+            company_url,
+            company_logo,
+            company_source_color,
             date_start,
             date_end,
             created_at,
@@ -26,35 +34,38 @@ const { data: portfolio } = await useAsyncData(
             )
      `
       )
-      .order("created_at"),
+      .order("id", { ascending: true }),
   {
     transform: ({ data }): PortfolioData[] =>
       (data as PortfolioData[]).reduce((acc, curr) => {
         const { portfolio_tags, ...rest } = curr
         const tags = portfolio_tags.map((tag) => tag.tags)
         const href = `/portfolio/${curr.id}`
-        return [...acc, { ...rest, tags, href }]
+        return [
+          ...acc,
+          {
+            ...rest,
+            tags,
+            href,
+          },
+        ]
       }, []),
   }
 )
-const active = useState()
 
-const yearFromDate = (date: string) => {
-  const [year] = date.split("-")
-  return year
-}
+const active = useState()
 </script>
 
 <template>
   <TheNav>
-    <ul class="grid gap-2">
-      <li v-for="data in portfolio" :key="data.id">
+    <ul>
+      <li v-for="(data, i) in portfolio" :key="data.id">
         <NuxtLink
           :class="{ selected: active === data.id }"
           :to="data.href"
           @click.native="active = data.id"
         >
-          <TheCard :data="data">
+          <TheCard :data-source-color="data.company_source_color">
             <template #dates>
               <div class="w-fit text-end">
                 <p class="text-body-medium font-bold">
@@ -68,13 +79,13 @@ const yearFromDate = (date: string) => {
             <template #heading>
               <div>
                 <p
-                  data-transition-name="heading"
                   class="text-title-medium font-bold leading-tight text-on-surface-variant md:text-title-large md:font-bold"
+                  data-transition-name="heading"
                 >
                   {{ data.heading }} - {{ data.company_name }}
                 </p>
                 <p
-                  class="text-label-medium font-semibold leading-loose text-on-surface-variant"
+                  class="pb-1.5 pt-1 text-label-medium font-semibold text-on-surface-variant"
                 >
                   {{ data.subheading }}
                 </p>
@@ -85,6 +96,7 @@ const yearFromDate = (date: string) => {
                 {{ data.short_description }}
               </p>
             </template>
+            <template #footer></template>
           </TheCard>
         </NuxtLink>
       </li>
@@ -92,4 +104,9 @@ const yearFromDate = (date: string) => {
   </TheNav>
 </template>
 
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+.selected [data-transition-name="heading"] {
+  view-transition-name: heading;
+  contain: paint;
+}
+</style>

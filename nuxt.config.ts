@@ -18,9 +18,13 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
     "@nuxtjs/color-mode",
     "@nuxt/image-edge",
+    "@nuxtjs/google-fonts",
     "nuxt-icon",
     "@/modules/theme/index.ts",
   ],
+  imports: {
+    dirs: ["~/stores"],
+  },
   pinia: {
     autoImports: ["defineStore"],
   },

@@ -179,7 +179,6 @@ export default {
         light: "rgb(var(--md-sys-color-scrim-light-rgb) / <alpha-value>)",
         dark: "rgb(var(--md-sys-color-scrim-dark-rgb) / <alpha-value>)",
       },
-      // Fixed Colors
 
       // Surface Levels
       "surface-level-1": {

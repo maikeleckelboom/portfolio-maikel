@@ -47,20 +47,11 @@ const { onRefresh, onBack, onMore } = toRefs(events)
     data-view-transition-name="top-bar"
   >
     <Center>
-      <div class="grid grid-cols-2">
-        <div class="col-span-1">
-          <button @click="onBack" class="px-4 py-3">
-            <Icon class="h-6 w-6" name="ic:baseline-arrow-back" />
-          </button>
-          <button v-if="onRefresh" @click="onRefresh" class="px-4 py-3">
-            <Icon class="h-6 w-6" name="ic:baseline-refresh" />
-          </button>
-        </div>
-        <div class="col-span-1 flex justify-end">
-          <button v-if="onMore" @click="onMore" class="px-4 py-3">
-            <Icon class="h-6 w-6" name="ic:baseline-more-vert" />
-          </button>
-        </div>
+      <div class="flex flex-nowrap items-center">
+        <button class="px-4 py-3" @click="onBack">
+          <Icon class="h-6 w-6" name="ic:baseline-arrow-back" />
+        </button>
+        <slot> </slot>
       </div>
     </Center>
   </div>

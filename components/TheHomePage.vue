@@ -1,9 +1,5 @@
 <script lang="ts" setup>
 import type { NavItem } from "~/types"
-import PortfolioCards from "~/components/PortfolioCards.vue"
-import TheHeadline from "~/components/ThePersonalia.vue"
-import TheAvatar from "~/components/TheAvatar.vue"
-import ThePersonalia from "~/components/ThePersonalia.vue"
 
 const contactDetails = ref<NavItem[]>([
   {
@@ -40,74 +36,23 @@ const socialsList = ref<NavItem[]>([
     href: "https://linkedin.com/in/maikeleckelboom",
   },
 ])
-
-const selectedTitle = useState()
 </script>
 
 <template>
-  <div class="">
-    <Center>
-      <div class="grid">
-        <ThePersonalia data-view-transition-name="personalia">
-          <template #avatar>
-            <NuxtImg
-              alt="Maikel Eckelboom"
-              class="absolute object-cover grayscale filter"
-              src="maikel-circle.svg"
-            />
-          </template>
-          <template #title> Maikel Eckelboom</template>
-          <template #subtitle>
-            Full-stack developer met een passie voor design en technologie.
-          </template>
-          <template #footer>
-            <NuxtLink
-              class="grid h-[38px] place-items-center rounded-full border-thin border-outline-variant px-4 py-2 text-label-medium font-semibold hover:bg-primary hover:text-on-primary"
-              to="/about"
-            >
-              meer over mij
-            </NuxtLink>
-          </template>
-        </ThePersonalia>
-      </div>
-    </Center>
-  </div>
-  <div class="bg-surface">
-    <Center>
-      <div class="flex w-full gap-6 py-2">
-        <section class="flex flex-col pt-4">
-          <div
-            class="flex flex-nowrap items-baseline justify-between px-3 md:px-0"
-          >
-            <h1
-              class="mb-4 -skew-x-6 text-2xl font-thin leading-tight tracking-wide"
-            >
-              werkervaring
-            </h1>
-            <NuxtLink
-              class="grid h-[38px] place-items-center rounded-full border-thin border-outline-variant px-4 py-2 text-label-medium font-semibold hover:bg-primary hover:text-on-primary"
-              to="/portfolio"
-            >
-              bekijk mijn werk
-            </NuxtLink>
-          </div>
-          <div class="flex flex-col">
-            <PortfolioCards />
-          </div>
-        </section>
-      </div>
-    </Center>
+  <div class="" data-component="TheHomePage">
+    <div></div>
+    <div>
+      <svg>
+        <filter id="f">
+          <feTurbulence baseFrequency="7.5" type="fractalNoise" />
+        </filter>
+      </svg>
+    </div>
   </div>
 </template>
 
 <style lang="postcss">
 [data-view-transition-name="personalia"] {
   view-transition-name: personalia;
-}
-
-::view-transition-old(personalia) {
-}
-
-::view-transition-new(personalia) {
 }
 </style>

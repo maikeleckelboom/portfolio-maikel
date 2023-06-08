@@ -1,15 +1,11 @@
-<script generic="T extends { [key: string]: any }" lang="ts" setup>
-const { data } = defineProps<{
-  data: T
-}>()
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <div
-    class="relative grid grid-cols-10 overflow-hidden rounded-md py-4 text-on-surface-variant"
+    class="relative flex overflow-hidden rounded-md py-4 text-on-surface-variant"
     data-component="TheCard"
   >
-    <div class="col-span-2 flex h-fit justify-end pr-3.5 md:col-span-1">
+    <div class="col-span-2 flex">
       <slot name="dates" />
     </div>
     <div class="col-span-7 mb-1 pl-3.5 text-[balance] md:col-span-9">

@@ -1,20 +1,15 @@
-<script setup lang='ts'>
-import { NavItem } from '~/types'
+<script lang="ts" setup>
+import { NavItem } from "~/types"
 
-const { items } = defineProps<{
-  items: NavItem[]
+const { list } = defineProps<{
+  list: NavItem[]
 }>()
 </script>
 
 <template>
-  <nav class='relative'>
+  <nav>
     <ul>
-      <NavListItem
-        v-for='child in items'
-        :key='child.name'
-        :item='child'
-      />
+      <NavListItem v-for="item in list" :key="item.name" :item="item" />
     </ul>
   </nav>
 </template>
-

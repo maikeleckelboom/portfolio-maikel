@@ -1,17 +1,27 @@
+<script lang="ts" setup>
+const { url = "/", alt = "" } = defineProps<{
+  url?: string
+  alt?: string
+}>()
+</script>
+
 <template>
   <div
-    class="p2 ce-items-center relative grid aspect-square h-16 w-16 rounded-full border-thin border-outline-variant p-4"
+    class="relative grid h-[62px] w-[62px] overflow-hidden rounded-full border-thin border-outline-variant"
+    data-component="Avatar"
   >
-    <slot />
+    <slot>
+      <NuxtImg
+        :alt="alt"
+        :src="url"
+        class="relative top-[8px] mx-[8px] h-[70%] w-[70%] grayscale filter"
+      />
+    </slot>
   </div>
 </template>
 
-<style scoped lang="postcss">
-[data-class="inner-circle"] {
-}
-.selected div {
+<style lang="postcss" scoped>
+.selected [data-component="Avatar"] {
   view-transition-name: avatar;
 }
 </style>
-
-<script setup></script>

@@ -1,6 +1,4 @@
-export interface PortfolioArticle {
-
-}
+export interface PortfolioArticle {}
 
 export type Tag = {
   id: number
@@ -14,10 +12,13 @@ export interface PortfolioData {
   description: string
   short_description: string
   company_name: string
+  company_url: string
+  company_logo: string
+  company_source_color: number
   date_start: string
   date_end: string
   created_at: string
-  tags: Tag[],
+  tags: Tag[]
   href?: string
 }
 
@@ -25,12 +26,15 @@ export type NavItem = {
   name?: string
   icon?: string
   children?: NavItem[]
-} & ({
-  href: string;
-  value: string;
-  children?: never
-} | {
-  children: NavItem[];
-  href?: never;
-  value?: never;
-})
+} & (
+  | {
+      href: string
+      value: string
+      children?: never
+    }
+  | {
+      children: NavItem[]
+      href?: never
+      value?: never
+    }
+)

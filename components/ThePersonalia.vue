@@ -1,22 +1,22 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div class="flex w-full gap-5 px-3 py-4 text-on-surface-variant">
-    <div class="flex">
-      <TheAvatar>
+  <div class="flex w-full flex-col text-on-surface-variant">
+    <div class="flex flex-nowrap">
+      <div class="flex">
         <slot name="avatar" />
-      </TheAvatar>
-    </div>
-    <div class="">
-      <TheTitle>
-        <slot name="title" />
-      </TheTitle>
-      <TheSubtitle>
-        <slot name="subtitle" />
-      </TheSubtitle>
-      <div class="col-span-full flex">
-        <slot name="footer" />
       </div>
+      <div class="flex flex-col">
+        <TheTitle>
+          <slot name="title" />
+        </TheTitle>
+        <TheSubtitle>
+          <slot name="subtitle" />
+        </TheSubtitle>
+      </div>
+    </div>
+    <div class="flex flex-nowrap">
+      <slot name="footer" />
     </div>
   </div>
 </template>
