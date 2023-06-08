@@ -5,7 +5,7 @@
   <TheHeader />
   <main class="relative h-full w-full">
     <!-- Section 1 -->
-    <section class="grid bg-surface-level-1 py-4">
+    <section class="grid py-4">
       <div class="mx-auto w-full max-w-6xl">
         <div
           class="grid w-full grid-cols-[auto,1fr] gap-4 overflow-hidden pl-2 pr-2 pt-1.5 text-on-surface-variant"

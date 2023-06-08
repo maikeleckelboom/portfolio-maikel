@@ -14,7 +14,7 @@ const { url = "/", alt = "" } = defineProps<{
       <NuxtImg
         :alt="alt"
         :src="url"
-        class="relative top-[8px] mx-[8px] h-[70%] w-[70%] grayscale filter"
+        class="relative top-[8px] mx-[8px] h-[90%] w-[70%] grayscale filter"
       />
     </slot>
   </div>

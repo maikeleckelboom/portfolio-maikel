@@ -23,7 +23,7 @@
                   >
                     Maikel Eckelboom
                   </h1>
-                  <p>
+                  <p class="text-title-medium text-on-surface-variant">
                     Full-stack developer met een passie voor design en
                     technologie.
                   </p>
@@ -41,17 +41,12 @@
                   </button>
                 </NuxtLink>-->
               </div>
-              <div>
-                <p class="mb-4" data-view-transition-name="about">
-                  I’m a full-stack developer with a passion for design and
-                  technology. I love to create beautiful and functional
-                  applications that are easy to use and maintain.
+              <div data-view-transition-name="about" class="max-w-md">
+                <p class="mb-4">
+                  I love to create beautiful and functional applications that
+                  are easy to use and maintain.
                 </p>
-                <p class="mb-4" data-view-transition-name="about-more">
-                  I’m a fast learner and I love to learn new things. I’m always
-                  looking for new challenges and I’m not afraid to step out of
-                  my comfort zone.
-                </p>
+
                 <!--                <div class="mt-8 flex flex-wrap">
                   <TheContactDetails />
                 </div>-->
@@ -68,32 +63,17 @@
 [data-view-transition-name="about"] {
   view-transition-name: about;
 }
-
-[data-view-transition-name="about-more"] {
-  view-transition-name: about-more;
-}
 </style>
 
 <style>
-::view-transition-old(about-more),
-::view-transition-new(about-more) {
-  animation-delay: 400ms;
-}
-
-::view-transition-old(about-more) {
-  animation: aboutTextIn 200ms ease-in;
-}
-
-::view-transition-new(about-more) {
-  animation: aboutTextIn 300ms ease-out;
-}
-
 ::view-transition-old(about) {
   animation: aboutTextOut 200ms ease-in;
+  animation-fill-mode: both;
 }
 
 ::view-transition-new(about) {
   animation: aboutTextIn 200ms ease-out;
+  animation-fill-mode: both;
 }
 
 @keyframes aboutTextIn {
@@ -114,7 +94,7 @@
   }
   to {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(-12px);
   }
 }
 </style>
