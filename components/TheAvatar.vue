@@ -17,10 +17,14 @@ const { url = "/", alt = "" } = defineProps<{
         class="relative top-[8px] mx-[8px] h-[90%] w-[70%] grayscale filter"
       />
     </slot>
+    <div data-id="gradient" />
+    <filter id="f">
+      <feTurbulence baseFrequency="7.5" type="fractalNoise" />
+    </filter>
   </div>
 </template>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 .selected [data-component="Avatar"] {
   view-transition-name: avatar;
 }
